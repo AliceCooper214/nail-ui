@@ -7,6 +7,7 @@ set -e
 pwd
 
 # 生成静态文件
+pnpm run build:components
 pnpm run docs:build
 
 # 进入生成的文件夹
