@@ -1,21 +1,22 @@
 import DefaultTheme from 'vitepress/theme'
 
+// 导入nail-ui
+import NailUI from '../../../scripts/entry'
+import '../../../src/styles/index.scss'
+
 // 主题样式
 import 'vitepress-theme-demoblock/dist/theme/styles/index.css'
-import './demoblock.scss'
-// 插件的组件，主要是demo组件
-import Demo from 'vitepress-theme-demoblock/dist/client/components/Demo.vue'
-import DemoBlock from 'vitepress-theme-demoblock/dist/client/components/DemoBlock.vue'
 
-// 引入字体图标css
-import './iconfont.css'
-import './iconfont.js'
+import './style.css'
+import { useComponents } from './useComponents.js'
 
 export default {
   ...DefaultTheme,
-  enhanceApp({ app }) {
-    // 注册DemoBlock所需组件
-    app.component('Demo', Demo)
-    app.component('DemoBlock', DemoBlock)
+  enhanceApp(ctx) {
+    // DefaultTheme
+    DefaultTheme.enhanceApp(ctx)
+    useComponents(ctx.app)
+
+    ctx.app.use(NailUI)
   }
 }

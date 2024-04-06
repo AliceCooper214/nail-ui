@@ -1,4 +1,5 @@
-import { demoBlockPlugin } from 'vitepress-theme-demoblock'
+import { defineConfig } from 'vitepress'
+import { demoBlockPlugin, demoblockVitePlugin } from 'vitepress-theme-demoblock'
 
 const sidebar = [
   {
@@ -6,10 +7,14 @@ const sidebar = [
     items: [
       { text: '安装', link: '/guide/install' } // /guide/install.md
     ]
+  },
+  {
+    text: '通用',
+    items: [{ text: 'Button 按钮', link: '/components/button/' }]
   }
 ]
 
-export default {
+export default defineConfig({
   themeConfig: {
     sidebar
   },
@@ -17,5 +22,8 @@ export default {
     config: md => {
       md.use(demoBlockPlugin)
     }
+  },
+  vite: {
+    plugins: [demoblockVitePlugin()]
   }
-}
+})

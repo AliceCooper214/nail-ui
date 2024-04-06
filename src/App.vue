@@ -12,6 +12,7 @@ import HelloWorld from './components/HelloWorld.vue'
     </a>
   </div>
   <HelloWorld msg="Vite + Vue" />
+  <NButton :type="'secondary'" :size="'large'" :disabled="false">按钮1</NButton>
 </template>
 
 <style scoped>
